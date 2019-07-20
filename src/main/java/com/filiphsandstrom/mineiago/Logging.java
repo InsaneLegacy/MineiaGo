@@ -37,7 +37,7 @@ public class Logging {
         String file_content;
         PrintWriter printer;
         
-            try (Stream<String> stream = Files.lines( Paths.get(filePath), StandardCharsets.UTF_8))
+            try (Stream<String> stream = Files.lines( Paths.get(filePath), StandardCharsets.UTF_8));
             printer = new PrintWriter(new FileWriter(loggingFile));
         } catch (Exception e) {
             e.printStackTrace();
