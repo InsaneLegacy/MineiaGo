@@ -41,7 +41,7 @@ public class Logging {
         PrintWriter printer;
         
      try {
-         Stream<String> stream = Files.lines(loggingFile.toPath(), StandardCharsets.UTF_8);
+          file_content = Files.lines(loggingFile.toPath(), StandardCharsets.UTF_8);
             printer = new PrintWriter(new FileWriter(loggingFile));
         } catch (Exception e) {
             e.printStackTrace();
