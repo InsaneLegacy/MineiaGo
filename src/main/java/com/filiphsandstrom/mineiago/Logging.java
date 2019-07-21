@@ -1,34 +1,34 @@
 package com.filiphsandstrom.mineiago;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.PrintWriter;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+//import java.io.File;
+//import java.io.FileWriter;
+//import java.io.PrintWriter;
+//import java.nio.charset.StandardCharsets;
+//import java.nio.file.Files;
+//import java.text.DateFormat;
+//import java.text.SimpleDateFormat;
+//import java.util.Date;
 
 public class Logging {
-    private File loggingFile;
+   // private File loggingFile;
 
-    public Logging() {
-        MineiaGo instance = MineiaGo.getInstance();
+   // public Logging() {
+      //  MineiaGo instance = MineiaGo.getInstance();
 
         // Create plugin folder if it doesn't exist
-        if (!instance.getDataFolder().exists())
-            instance.getDataFolder().mkdir();
+      //  if (!instance.getDataFolder().exists())
+        //    instance.getDataFolder().mkdir();
 
-        loggingFile = new File(instance.getDataFolder(), "MineiaGo.log");
-        if (!loggingFile.exists()) {
-            try {
-                loggingFile.createNewFile();
-            } catch (Exception e) {
-                e.printStackTrace();
-                return;
-            }
-        }
-    }
+      //  loggingFile = new File(instance.getDataFolder(), "MineiaGo.log");
+     //   if (!loggingFile.exists()) {
+          //  try {
+          //      loggingFile.createNewFile();
+         //   } catch (Exception e) {
+        //        e.printStackTrace();
+        //        return;
+       //     }
+     //   }
+  // }
 
    // private void Print(String msg) {
       //  if(MineiaGo.getInstance().getConfig().getLoglevel() >= 3)
@@ -47,39 +47,39 @@ public class Logging {
          //   return;
       //  }
 
-        DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
-        Date date = new Date();
+     //   DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+    //    Date date = new Date();
 
-        String output = "[" + dateFormat.format(date) + "]" + msg + "\n";
-        printer.print(file_content + output);
-        printer.close();
-    }
+   //     String output = "[" + dateFormat.format(date) + "]" + msg + "\n";
+    //    printer.print(file_content + output);
+     //   printer.close();
+  //  }
 
-    public void Debug(String msg) {
-        if (MineiaGo.getInstance().getConfig().getLoglevel() <= -1) {
-            Print("[DEBUG]: " + msg);
-            MineiaGo.getInstance().getLogger().fine(msg);
-        }
-    }
+  //  public void Debug(String msg) {
+   //     if (MineiaGo.getInstance().getConfig().getLoglevel() <= -1) {
+    //        Print("[DEBUG]: " + msg);
+      //      MineiaGo.getInstance().getLogger().fine(msg);
+      //  }
+//    }
 
-    public void Info(String msg) {
-        if (MineiaGo.getInstance().getConfig().getLoglevel() <= 0) {
-            Print("[INFO]: " + msg);
-            MineiaGo.getInstance().getLogger().info(msg);
-        }
-    }
+  //  public void Info(String msg) {
+    //    if (MineiaGo.getInstance().getConfig().getLoglevel() <= 0) {
+      //      Print("[INFO]: " + msg);
+      //      MineiaGo.getInstance().getLogger().info(msg);
+       // }
+  //  }
 
-    public void Warning(String msg) {
-        if (MineiaGo.getInstance().getConfig().getLoglevel() <= 1) {
-            Print("[WARNING]: " + msg);
-            MineiaGo.getInstance().getLogger().warning(msg);
-        }
-    }
+  //  public void Warning(String msg) {
+      //  if (MineiaGo.getInstance().getConfig().getLoglevel() <= 1) {
+         //   Print("[WARNING]: " + msg);
+          //  MineiaGo.getInstance().getLogger().warning(msg);
+       // }
+    //}
 
-    public void Fatal(String msg) {
-        if (MineiaGo.getInstance().getConfig().getLoglevel() <= 2) {
-            Print("[FATAL]: " + msg);
-            MineiaGo.getInstance().getLogger().severe(msg);
-        }
+    //public void Fatal(String msg) {
+    //    if (MineiaGo.getInstance().getConfig().getLoglevel() <= 2) {
+       //     Print("[FATAL]: " + msg);
+        //   MineiaGo.getInstance().getLogger().severe(msg);
+       // }
     }
 }
