@@ -9,7 +9,6 @@ import java.util.Date;
 
 public class Logging {
     private File loggingFile;
-    PrintWriter printer;
 
     public Logging() {
         MineiaGo instance = MineiaGo.getInstance();
@@ -27,12 +26,14 @@ public class Logging {
                 return;
             }
         }
-        
+    }
+    
     private void Print(String msg) {
         if(MineiaGo.getInstance().getConfig().getLoglevel() >= 3)
             return;
-    }
-        
+            
+        String file_content;
+        PrintWriter printer;
         try {
             printer = new PrintWriter(new FileWriter(loggingFile));
         } catch (Exception e) {
