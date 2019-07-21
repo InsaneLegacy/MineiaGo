@@ -10,9 +10,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Logging {
+    
     private File loggingFile;
 
-    File file;
+    private File file;
    
     public FileManager(Reporter plugin) {
         this.plugin = plugin;
@@ -46,5 +47,4 @@ public class Logging {
         String finalMessage = date + " - "+ name + ": " + msg + "\n";
         addMessage(finalMessage);
     }
-  }
 }
