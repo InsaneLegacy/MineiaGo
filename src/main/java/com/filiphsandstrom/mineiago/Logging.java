@@ -1,85 +1,50 @@
 package com.filiphsandstrom.mineiago;
 
-//import java.io.File;
-//import java.io.FileWriter;
-//import java.io.PrintWriter;
-//import java.nio.charset.StandardCharsets;
-//import java.nio.file.Files;
-//import java.text.DateFormat;
-//import java.text.SimpleDateFormat;
-//import java.util.Date;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Logging {
-   // private File loggingFile;
+    private File loggingFile;
 
-   // public Logging() {
-      //  MineiaGo instance = MineiaGo.getInstance();
-
-        // Create plugin folder if it doesn't exist
-      //  if (!instance.getDataFolder().exists())
-        //    instance.getDataFolder().mkdir();
-
-      //  loggingFile = new File(instance.getDataFolder(), "MineiaGo.log");
-     //   if (!loggingFile.exists()) {
-          //  try {
-          //      loggingFile.createNewFile();
-         //   } catch (Exception e) {
-        //        e.printStackTrace();
-        //        return;
-       //     }
-     //   }
-  // }
-
-   // private void Print(String msg) {
-      //  if(MineiaGo.getInstance().getConfig().getLoglevel() >= 3)
-        //    return;
-
-     //   String file_content;
-    //    PrintWriter printer;
-    //    try {
-      //      file_content = Files.readString(loggingFile.toPath(), StandardCharsets.UTF_8);
-      //      printer = new PrintWriter(new FileWriter(loggingFile));
-      //  } catch (Exception e) {
-      //      e.printStackTrace();
-
-          //  MineiaGo.getInstance().getLogger()
-           //         .warning("Failed to log message. Do we have the right directory permissions or is the disk full?");
-         //   return;
-      //  }
-
-     //   DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
-    //    Date date = new Date();
-
-   //     String output = "[" + dateFormat.format(date) + "]" + msg + "\n";
-    //    printer.print(file_content + output);
-     //   printer.close();
-  //  }
-
-  //  public void Debug(String msg) {
-   //     if (MineiaGo.getInstance().getConfig().getLoglevel() <= -1) {
-    //        Print("[DEBUG]: " + msg);
-      //      MineiaGo.getInstance().getLogger().fine(msg);
-      //  }
-//    }
-
-  //  public void Info(String msg) {
-    //    if (MineiaGo.getInstance().getConfig().getLoglevel() <= 0) {
-      //      Print("[INFO]: " + msg);
-      //      MineiaGo.getInstance().getLogger().info(msg);
-       // }
-  //  }
-
-  //  public void Warning(String msg) {
-      //  if (MineiaGo.getInstance().getConfig().getLoglevel() <= 1) {
-         //   Print("[WARNING]: " + msg);
-          //  MineiaGo.getInstance().getLogger().warning(msg);
-       // }
-    //}
-
-    //public void Fatal(String msg) {
-    //    if (MineiaGo.getInstance().getConfig().getLoglevel() <= 2) {
-       //     Print("[FATAL]: " + msg);
-        //   MineiaGo.getInstance().getLogger().severe(msg);
-       // }
-   // }
+    File file;
+   
+    public FileManager(Reporter plugin) {
+        this.plugin = plugin;
+        System.out.println(plugin.getDataFolder()+"");
+        file = new File(plugin.getDataFolder() + "/log.txt");
+    }
+   
+    public void addMessage(String message){
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter(file, true));
+            bw.append(message);
+            bw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+   
+    public void setup(){
+        if(!file.exists()){
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+   
+    public void formatMessage(String msg, String name){
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM HH:mm:ss");
+        String date = dateFormat.format(new Date());
+        String finalMessage = date + " - "+ name + ": " + msg + "\n";
+        addMessage(finalMessage);
+    }
+  }
 }
