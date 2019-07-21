@@ -81,5 +81,5 @@ public class Logging {
        //     Print("[FATAL]: " + msg);
         //   MineiaGo.getInstance().getLogger().severe(msg);
        // }
-    }
+   // }
 }
