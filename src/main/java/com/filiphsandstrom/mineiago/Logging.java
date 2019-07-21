@@ -48,7 +48,7 @@ public class Logging {
         Date date = new Date();
 
         String output = "[" + dateFormat.format(date) + "]" + msg + "\n";
-        printer.print(file_content + output);
+        printer.print(output);
         printer.close();
     }
 
