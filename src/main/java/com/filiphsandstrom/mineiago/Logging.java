@@ -44,16 +44,12 @@ public class Logging {
             return;
         }
 
-    public void Save () {
-        printer.close();
-    }
-
-    private void Print (String msg) {
         DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
         Date date = new Date();
 
         String output = "[" + dateFormat.format(date) + "]" + msg + "\n";
-        printer.print(output);
+        printer.print(file_content + output);
+        printer.close();
     }
 
     public void Debug(String msg) {
